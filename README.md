@@ -6,13 +6,18 @@ El presente proyecto tiene como objetivo desarrollar funciones en python que por
 
 ### Pre-requisitos 📋
 
-Los pre-requisitos para desplegar el proyecto se podrán visualizar en el archivo **requeriments.txt**, allí encontrará las bibliotecas necesarias.
+Los pre-requisitos para desplegar el proyecto se podrán visualizar en el archivo [requeriments.txt](https://github.com/juanpa54/Parcial2BigData/blob/d7520e58c6fe7b0f53f9715a47f8baf31f31131a/requirements.txt), allí encontrará las bibliotecas necesarias.
 
 ### 1. Función aws Lambda que realiza scrapping en Yahoo Finances 💰💲
 
 La función que se encarga de realizar el scrapping en Yahoo Finnances es **app3.py**, si se desea ejecutar se deberá modificar en el código el nombre del bucket en el que se guardarán los datos. Esta función descargará tres archivos csv con las acciones de Avianca, Ecopetrol, Grupo Aval y Cementos Argos.
 
-En S3 quedará la información en la forma "s3://**nombreDeTuBucket**/stocks/company=xxx/year=xxx/month=xxx/day=xxx"
+En S3 quedará la información en la forma "s3://**nombreDeTuBucket**/stocks/company=xxx/year=xxx/month=xxx/day=xxx".
+
+Posteriormente con la información en S3 se realizó la respectiva tabla en Athena y se crearon las particiones para cada compañia y para las fechas.
+[Pantallazo de la tabla con particiones](https://github.com/juanpa54/Parcial2BigData/blob/7521044c1a6e2b584d452ba03b14ac8ee88c204c/tabla1.png)
+
+Para la actualización de las particiones se deberá crear el lambda con un disparador al bucket que contenga la información del scrapping.
 
 ### Instalación 🔧
 
