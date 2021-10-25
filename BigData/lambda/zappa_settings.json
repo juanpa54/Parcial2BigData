@@ -1,0 +1,44 @@
+{
+    "dev": {
+        "app_function": "app.handler",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "bigdata",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-aevxobd88",
+	"keep_warm": false,
+	"apigateway_enabled":false
+    }
+
+    "dev2": {
+        "app_function": "app2.handler",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "bigdata",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-i3guy7m1l",
+	"keep_warm": false,
+	"apigateway_enabled":false,
+	"events": [{
+        	"function": "app2.handler",
+         	"event_source": {
+                 	"arn":  "arn:aws:s3:::news043",
+                 	"events": [
+                    		"s3:ObjectCreated:*"
+                  	]
+               	}
+            }]
+    }
+
+    "dev3": {
+        "app_function": "app3.handler",
+        "aws_region": "us-east-1",
+        "profile_name": "default",
+        "project_name": "bigdata",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-i3guy7m1l",
+	"keep_warm": false,
+	"apigateway_enabled":false
+    }
+
+}
