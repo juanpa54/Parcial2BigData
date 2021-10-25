@@ -1,0 +1,23 @@
+import time
+import boto3
+
+query = 'MSCK REPAIR TABLE company_actions'
+DATABASE = 'actions'
+output='s3://parquet001/'
+
+def lambda_handler(event, context):
+    query = "MSCK REPAIR TABLE company_actions"
+    client = boto3.client('athena')
+
+    # Execution
+    response = client.start_query_execution(
+        QueryString=query,
+        QueryExecutionContext={
+            'Database': DATABASE
+        },
+        ResultConfiguration={
+            'OutputLocation': output,
+        }
+    )
+    return response
+    return
